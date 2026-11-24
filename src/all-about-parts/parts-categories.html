@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - JM Motorshop</title>
+    <link rel="icon" type="image/png" href="../logo-icons/logologo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="parts-categories-design.css">
+</head>
+<body>
+
+    <div class="wipe" id="wipe"></div>
+
+    <button class="back-btn" onclick="triggerWipe('../branding/brand.html')">← BACK</button>
+
+    <div class="header">
+        <h1>SELECT <span>CATEGORY</span></h1>
+        <div class="brand-label" id="brandName">Loading...</div>
+    </div>
+
+    <div class="grid">
+        <div class="cat-card" onclick="selectCategory('Engine')">
+            <span class="label">Engine</span>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="cat-card" onclick="selectCategory('Body')">
+            <span class="label">Body</span>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="cat-card" onclick="selectCategory('Electrical')">
+            <span class="label">Electrical</span>
+            <span class="arrow">→</span>
+        </div>
+        
+        <div class="cat-card" onclick="selectCategory('Engine & Gear Oil')">
+            <span class="label">Engine & Gear Oil</span>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="cat-card" onclick="selectCategory('Tires')">
+            <span class="label">Tires</span>
+            <span class="arrow">→</span>
+        </div>
+    </div>
+
+    <script>
+        // Initialize: Kunin ang data mula sa localStorage
+        const selectedBrand = localStorage.getItem('selectedBrand');
+        const brandDisplay = document.getElementById('brandName');
+
+        // Safe check kung may napili na brand
+        if (selectedBrand) {
+            brandDisplay.innerText = `${selectedBrand} Parts Selection`;
+        } else {
+            brandDisplay.innerText = "No Brand Selected";
+        }
+
+        // Logic para sa pag-save ng category
+        function selectCategory(cat) {
+            localStorage.setItem('selectedCategory', cat);
+            triggerWipe('parts-list.html');
+        }
+
+        // Logic para sa transition animation
+        function triggerWipe(url) {
+            const wipe = document.getElementById('wipe');
+            wipe.classList.add('active');
+            setTimeout(() => {
+                window.location.href = url;
+            }, 600);
+        }
+    </script>
+</body>
+</html>

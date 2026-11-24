@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1E1E1E;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden; 
+}
+
+.main-canvas {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #222222;
+}
+
+.corner-logo {
+    width: 65px;
+    height: 65px;
+    position: absolute;
+    left: 15px;
+    top: 9px;
+    z-index: 25;
+}
+
+.content-overlay {
+    position: relative;
+    z-index: 15;
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh; 
+}
+
+.login-title {
+    font-size: 80px;
+    font-weight: 900;
+    color: white;
+    text-align: center;
+    text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    margin-bottom: 40px;
+}
+
+.form-container {
+    width: 804px; 
+}
+
+.input-group {
+    margin-bottom: 30px;
+}
+
+.input-group label {
+    display: block;
+    color: white;
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.input-group input {
+    width: 100%;
+    height: 102px;
+    background: white;
+    border: none;
+    padding: 0 30px;
+    font-size: 25px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+}
+
+.input-group input::placeholder {
+    color: rgba(0, 0, 0, 0.60);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.eye-icon {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    right: 30px;
+    top: 33px; 
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.2s;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    padding: 0 50px;
+}
+
+.btn-action {
+    width: 231px;
+    height: 76px;
+    background: white;
+    border-radius: 21px;
+    border: none;
+    font-size: 50px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-action:hover {
+    background: #A94141;
+    color: white;
+    transform: translateY(-5px);
+}
+
+.signup-footer {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    z-index: 20;
+}
+
+.underline {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.motor-bg {
+    position: absolute;
+    bottom: -5vh; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: 75vh;
+    opacity: 0.25;
+    z-index: 1;
+    object-fit: contain;
+    pointer-events: none; 
+}

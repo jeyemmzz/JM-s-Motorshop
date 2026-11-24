@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - JM Motorshop</title>
+    <link rel="icon" type="image/png" href="../logo-icons/logologo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { background: #0a0a0a; color: white; font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        
+        .back-btn {
+            position: absolute; top: 20px; left: 20px;
+            background: rgba(30, 30, 30, 0.5); color: #888; border: 1px solid #333;
+            padding: 10px 15px; border-radius: 50px; cursor: pointer;
+            font-weight: 700; font-size: 11px; text-transform: uppercase; transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        .back-btn:hover { background: #ff4d4d; border-color: #ff4d4d; color: white; }
+
+        .auth-card { background: #151515; padding: 40px; border-radius: 20px; border: 1px solid #222; width: 100%; max-width: 380px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h2 { color: #ff4d4d; font-weight: 900; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+        .input-group { margin-bottom: 20px; text-align: left; }
+        label { display: block; margin-bottom: 8px; font-size: 12px; color: #555; font-weight: 700; text-transform: uppercase; }
+        input { background: #0a0a0a; border: 1px solid #333; color: white; padding: 15px; width: 100%; border-radius: 10px; box-sizing: border-box; outline: none; transition: 0.3s; }
+        input:focus { border-color: #ff4d4d; }
+        .btn-auth { background: #ff4d4d; color: white; border: none; width: 100%; padding: 16px; border-radius: 10px; font-weight: 900; cursor: pointer; margin-top: 10px; text-transform: uppercase; transition: 0.3s; }
+        .btn-auth:hover { background: #e60000; transform: translateY(-2px); }
+        .toggle-link { margin-top: 25px; font-size: 14px; color: #666; cursor: pointer; user-select: none; }
+        .toggle-link span { color: #ff4d4d; font-weight: 700; }
+
+        .hidden { display: none; }
+
+        @media (max-width: 480px) {
+            .auth-card { padding: 28px 20px; border-radius: 16px; }
+            .back-btn { top: 15px; left: 15px; padding: 8px 12px; font-size: 10px; }
+            h2 { font-size: 20px; margin-bottom: 22px; }
+            input { padding: 12px; font-size: 14px; }
+            .btn-auth { padding: 14px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="back-btn" onclick="window.location.href='../start/index.html'">← Back</button>
+
+    <div class="auth-card" id="loginBox">
+        <h2>LOGIN</h2>
+        <div class="input-group">
+            <label>USERNAME</label>
+            <input type="text" id="loginUser" placeholder="Enter your username">
+        </div>
+        <div class="input-group">
+            <label>PASSWORD</label>
+            <input type="password" id="loginPass" placeholder="Enter your password">
+        </div>
+        <button class="btn-auth" onclick="login()">SIGN IN</button>
+        <div class="toggle-link" onclick="toggleAuth()">No account yet? <span>Register here</span></div>
+    </div>
+
+    <div class="auth-card hidden" id="registerBox">
+        <h2>REGISTER</h2>
+        <div class="input-group">
+            <label>CREATE USERNAME</label>
+            <input type="text" id="regUser" placeholder="Create your username">
+        </div>
+        <div class="input-group">
+            <label>CREATE PASSWORD</label>
+            <input type="password" id="regPass" placeholder="Create your password">
+        </div>
+        <button class="btn-auth" onclick="register()">CREATE ACCOUNT</button>
+        <div class="toggle-link" onclick="toggleAuth()">Already have an account? <span>Login here</span></div>
+    </div>
+
+    <script>
+        function toggleAuth() {
+            document.getElementById('loginBox').classList.toggle('hidden');
+            document.getElementById('registerBox').classList.toggle('hidden');
+        }
+
+        function register() {
+            const user = document.getElementById('regUser').value.trim();
+            const pass = document.getElementById('regPass').value.trim();
+
+            if(!user || !pass) {
+                alert("Please fill up all fields!");
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('jm_users')) || [];
+            if(users.some(u => u.username === user)) {
+                alert("Username already exists!");
+                return;
+            }
+
+            users.push({username: user, password: pass});
+            localStorage.setItem('jm_users', JSON.stringify(users));
+            alert("Registration Successful! You can now login.");
+            toggleAuth();
+        }
+
+        function login() { 
+            const user = document.getElementById('loginUser').value.trim();
+            const pass = document.getElementById('loginPass').value.trim();
+
+            if(!user || !pass) {
+                alert("Please enter username and password!");
+                return;
+            }
+
+           
+            if(user === "admin" && pass === "123") {
+                localStorage.setItem('currentUser', JSON.stringify({username: 'Admin'}));
+                window.location.href = '../admin/admin.html';
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('jm_users')) || [];
+            const foundUser = users.find(u => u.username === user && u.password === pass);
+
+            if(foundUser) {
+                localStorage.setItem('currentUser', JSON.stringify({username: user}));
+                alert("Login Successful!");
+                
+                window.location.href = '../start/index.html'; 
+            } else {
+                alert("Invalid username or password!");
+            }
+        }
+    </script>
+</body>
+</html>

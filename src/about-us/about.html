@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - JM Motorshop</title>
+    <link rel="icon" type="image/png" href="../logo-icons/logologo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="about-design.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-area">
+            <div class="logo-icon" onclick="handleAdminClick()">
+                <img src="../logo-icons/logologo.png" alt="Logo">
+            </div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="../start/index.html">Home</a></li>
+            <li><a href="about.html" class="active">About Store</a></li>
+            <li><a href="../branding/brand.html">View Shop</a></li>
+        </ul>
+
+        <div class="profile-area">
+            <a href="../Profile/profile.html" class="profile-circle">
+                <img src="../logo-icons/user-3-fill.png" alt="Profile">
+            </a>
+        </div>
+    </header>
+
+    <div class="about-container">
+        <div class="hero-title reveal">
+            <h1>BEYOND THE <span class="red-text">MACHINE</span></h1>
+        </div>
+
+        <section class="who-we-are">
+            <div class="who-image reveal"></div> 
+            <div class="who-text reveal">
+                <h2>Who We Are</h2>
+                <p>Established in 2026, JM Motorshop was created by a group of passionate motorcycle enthusiasts driven by a commitment to excellence in performance and reliability. We are more than a retailer—we are a brand built on precision engineering, quality assurance, and rider trust.</p>
+                <p>With deep roots in the riding community, we understand that every detail matters. From the smallest component to high-performance upgrades, our focus is to deliver products that elevate safety, optimize performance, and redefine the riding experience.</p>
+            </div>
+        </section>
+
+        <div class="mv-grid">
+            <div class="card reveal">
+                <h2>Our Mission</h2>
+                <p>To set the standard in delivering premium, performance-tested motorcycle parts to riders nationwide. Through the fusion of advanced innovation and mechanical excellence, we are committed to enhancing performance, ensuring reliability, and elevating every riding experience.</p>
+            </div>
+            <div class="card reveal">
+                <h2>Our Vision</h2>
+                <p>To establish JM Motorshop as the leading authority in motorcycle engineering and performance innovation across Southeast Asia—setting the benchmark for quality, expertise, and access to world-class components for every rider.</p>
+            </div>
+        </div>
+
+        <div class="stats reveal">
+            <div class="stat-box">
+                <h3>100%</h3>
+                <p>Quality Assured Parts</p>
+            </div>
+            <div class="stat-box">
+                <h3>SUPPORT</h3>
+                <p>Customer Support Available</p>
+            </div>
+            <div class="stat-box">
+                <h3>NATIONWIDE</h3>
+                <p>Satisfied Customers Nationwide</p>
+            </div>
+        </div>
+
+        <div class="trust-line reveal">
+            <p>Built by riders. Trusted by thousands.</p>
+        </div>
+    </div>
+
+    <script src="about-function.js"></script>
+    <script>
+        function handleAdminClick() {
+            console.log("Logo clicked");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - JM Motorshop</title>
+    <link rel="icon" type="image/png" href="../logo-icons/logologo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="checkout-design.css">
+</head>
+<body>
+
+    <div class="checkout-box">
+        <a href="../branding/brand.html" class="back-link" style="color:#444; text-decoration:none; font-size:10px; font-weight:900; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">← Back to Shop</a>
+        
+        <h2 style="margin-top: 15px;">Checkout</h2>
+
+        <div class="user-card">
+            <small>Account Name</small>
+            <b id="accName">Loading...</b>
+        </div>
+
+        <div id="orderItemsDisplay" class="order-list"></div>
+
+        <div class="payment-section" style="margin-top: 20px;">
+            <h4 style="margin: 0 0 12px 0; color: #444; font-size: 10px; text-transform: uppercase; font-weight: 900; letter-spacing: 1px;">Payment Method</h4>
+            <div class="methods-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div class="method-card" onclick="selectMethod(this, 'GCash/PayMaya')">GCASH/PAYMAYA</div>
+                <div class="method-card" onclick="selectMethod(this, 'Cash')">CASH</div>
+            </div>
+        </div>
+
+        <div class="total-container">
+            <span style="font-weight:900; color: #444; text-transform: uppercase; font-size: 12px;">Total Amount</span>
+            <span id="totalDisplay" style="font-weight: 900; font-size: 28px; color: #4CAF50; letter-spacing: -1px;">₱0</span>
+        </div>
+
+        <button class="btn-place-order" id="orderBtn" onclick="processOrder()">Place Order Now</button>
+    </div>
+
+    <div id="receiptModal">
+        <div class="receipt-paper" id="printableReceipt">
+            <div class="receipt-header">
+                <h3 style="margin:0; letter-spacing: 3px; font-weight: 900;">JM MOTORSHOP</h3>
+                <small style="text-transform: uppercase; font-weight: bold;">Official Receipt</small><br>
+                <small id="rDate" style="color: #666;"></small>
+            </div>
+            <div class="receipt-line"><span>ORDER ID:</span> <span id="rID"></span></div>
+            <div class="receipt-line"><span>CUSTOMER:</span> <span id="rCust"></span></div>
+            <div class="receipt-line"><span>PAYMENT:</span> <span id="rPay"></span></div>
+            <div class="receipt-line"><span>STATUS:</span> <span id="rStatus" class="r-status"></span></div>
+            
+            <div style="border-top: 1px solid #eee; margin: 15px 0;"></div>
+            <div id="rItems"></div>
+            
+            <div class="receipt-total" style="border-top: 2px dashed #000; margin-top: 15px; padding-top: 15px; font-weight: 900; display: flex; justify-content: space-between; font-size: 18px;">
+                <span>TOTAL</span>
+                <span id="rTotal"></span>
+            </div>
+            
+            <p style="text-align:center; font-size:9px; margin-top:30px; font-weight: bold; text-transform: uppercase; border-top: 1px solid #eee; padding-top: 10px;">Ride Safe & Rev Up!<br>Thank you for choosing JM.</p>
+            
+            <button class="btn-done" onclick="finishOrder()">Done</button>
+        </div>
+    </div>
+
+    <script src="checkout-function.js"></script>
+</body>
+</html>

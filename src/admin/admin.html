@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN PANEL</title>
+    <link rel="icon" type="image/png" href="../logo-icons/logologo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin-design.css">
+</head>
+
+<body>
+
+    <div class="admin-nav">
+        <div class="admin-logo">Motorshop Admin <span>Panel</span></div>
+        <div style="display:flex; gap:12px; align-items: center;" class="nav-right">
+            <div class="admin-profile-section" id="adminProfile">
+                <span class="admin-name-tag" id="adminName">Admin</span>
+                <div class="admin-avatar" id="adminAvatar">
+                    <span id="adminInit">A</span>
+                    <img id="adminImg" src="" style="display:none;">
+                </div>
+            </div>
+
+            <a href="../branding/brand.html" class="nav-btn">VIEW SHOP</a>
+            <button onclick="logout()" class="nav-btn"
+                style="background:#ff4d4d; color:white; border:none;">LOGOUT</button>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <small>Total Revenue</small>
+                <h2 id="totalRevenue">₱0</h2>
+            </div>
+            <div class="stat-card">
+                <small>Total Orders</small>
+                <h2 id="totalOrders" style="color: white;">0</h2>
+            </div>
+        </div>
+
+        <div class="tab-menu">
+            <button class="tab-btn active" id="btn-inv" onclick="switchTab('inventory')">INVENTORY</button>
+            <button class="tab-btn" id="btn-rec" onclick="switchTab('receipts')">SALES RECORDS</button>
+            <button class="tab-btn" id="btn-usr" onclick="switchTab('users')">USERS</button>
+        </div>
+
+        <div id="inventory" class="content active">
+            <div class="search-container">
+                <input type="text" id="invSearch" class="search-input"
+                    placeholder="Search by name, brand, or category..." onkeyup="filterInventory()">
+            </div>
+
+            <div class="admin-card">
+                <h3>ADD NEW PRODUCT</h3>
+                <input type="text" id="pName" placeholder="Product Name (e.g. Racing Clutch)">
+                <div style="display:flex; gap:10px;" class="input-group">
+                    <select id="pBrand">
+                        <option value="Honda">Honda</option>
+                        <option value="Yamaha">Yamaha</option>
+                        <option value="Suzuki">Suzuki</option>
+                        <option value="Kawasaki">Kawasaki</option>
+                        <option value="KTM">KTM</option>
+                    </select>
+                    <select id="pCat">
+                        <option value="Engine">Engine</option>
+                        <option value="Body">Body</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Engine &amp; Gear Oil">Engine & Gear Oil</option>
+                        <option value="Tires">Tires</option>
+                    </select>
+                </div>
+                <div style="display:flex; gap:10px;" class="input-group">
+                    <input type="number" id="pPrice" placeholder="Price (₱)">
+                    <input type="number" id="pStock" placeholder="Stock Qty">
+                </div>
+                <button class="save-btn" onclick="addPart()">ADD TO MASTER INVENTORY</button>
+            </div>
+
+            <div class="admin-card" style="background: transparent; border: none; padding: 0;">
+                <h3 style="margin-left: 10px;">STOCK LISTING</h3>
+                <div class="table-container">
+                    <div id="inventoryDisplay"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="receipts" class="content">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;" class="section-header">
+                <h2 style="margin:0; font-size:18px; font-weight:900; text-transform:uppercase; letter-spacing:1px;">
+                    Recent Sales</h2>
+                <button onclick="clearSales()"
+                    style="color:#ff4d4d; background:none; border:none; cursor:pointer; font-size:11px; font-weight:900; text-transform:uppercase;">
+                    Wipe Sales History</button>
+            </div>
+            <div class="table-container">
+                <div id="receiptsDisplay"></div>
+            </div>
+        </div>
+
+        <div id="users" class="content">
+            <h2 style="margin-bottom:20px; font-size:18px; font-weight:900; text-transform:uppercase;">Registered Users</h2>
+            <div class="admin-card">
+                <div class="table-container">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid #333; color: #ff4d4d; font-size: 12px; text-transform: uppercase;">
+                                <th style="padding: 15px;">Username</th>
+                                <th style="padding: 15px;">Password</th>
+                                <th style="padding: 15px; text-align: right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="admin-function.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - JM Motorshop</title>
+    <link rel="icon" type="image/png" href="../logo-icons/logologo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="profile-design.css">
+</head>
+<body>
+
+    <button class="settings-trigger" onclick="openSettings()">⚙️ SETTINGS</button>
+
+    <div class="container">
+        <div class="profile-card">
+            <div class="avatar" id="avatarIcon">
+                <span id="initialText">?</span>
+                <img id="profileImg" src="" style="display: none;">
+            </div>
+            <h2 id="userName">Username</h2>
+            <div class="user-tag">Verified Customer</div>
+        </div>
+
+        <div class="history-title">Order History</div>
+        <div id="receiptsContainer"></div>
+
+        <div class="btn-group">
+            <button class="btn btn-shop" onclick="window.location.href='../branding/brand.html'">Shop More</button>
+            <button class="btn btn-home" onclick="window.location.href='../start/index.html'">Home</button>
+            <button class="btn btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <h3>Edit Profile</h3>
+            <label style="font-size: 10px; color: #444; font-weight: 900; text-transform: uppercase;">Display Name</label>
+            <input type="text" id="editNameInput" placeholder="Enter name">
+            
+            <label style="font-size: 10px; color: #444; font-weight: 900; text-transform: uppercase; display: block;">Profile Photo</label>
+            <input type="file" id="imageInput" accept=".jpg, .jpeg, .png" style="font-size: 10px; border: none; padding: 10px 0; color: #555;">
+            
+            <button class="btn btn-save" onclick="saveSettings()">Save Changes</button>
+            <button class="btn btn-logout" style="width: 100%; margin-top: 10px; color: #ff4d4d;" onclick="closeSettings()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="profile-function.js"></script>
+</body>
+</html>

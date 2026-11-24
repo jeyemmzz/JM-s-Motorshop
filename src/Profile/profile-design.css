@@ -1,0 +1,125 @@
+body { 
+            background: #0a0a0a; 
+            color: white; 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+
+        .container { width: 100%; max-width: 450px; position: relative; }
+
+        .settings-trigger {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #333;
+            color: #888;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 900;
+            transition: 0.3s;
+            z-index: 1000;
+            text-transform: uppercase;
+        }
+        .settings-trigger:hover { 
+            color: #ff4d4d; 
+            border-color: #ff4d4d; 
+            background: rgba(255, 77, 77, 0.1); 
+        }
+
+        .profile-card { 
+            background: #111; 
+            padding: 40px 30px; 
+            border-radius: 20px; 
+            text-align: center; 
+            border: 1px solid #222;
+            margin-bottom: 25px;
+            margin-top: 40px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .avatar { 
+            width: 100px; 
+            height: 100px; 
+            background: #ff4d4d; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 0 auto 20px; 
+            font-size: 40px; 
+            font-weight: 900; 
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.2);
+            overflow: hidden; 
+            border: 3px solid #ff4d4d;
+        }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+        h2 { margin: 0; color: #fff; text-transform: uppercase; letter-spacing: 1px; font-weight: 900; }
+        .user-tag { color: #ff4d4d; font-size: 11px; margin-top: 5px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+
+        .history-title { 
+            font-weight: 900; font-size: 12px; color: #444; text-transform: uppercase; 
+            margin-bottom: 15px; display: flex; align-items: center; letter-spacing: 1px;
+        }
+        .history-title::after { content: ''; flex: 1; height: 1px; background: #222; margin-left: 10px; }
+
+        .receipt-card { 
+            background: #111; border-radius: 15px; padding: 20px; margin-bottom: 15px; 
+            border: 1px solid #222; border-left: 4px solid #ff4d4d; 
+        }
+        .receipt-header { display: flex; justify-content: space-between; font-size: 10px; color: #555; margin-bottom: 10px; font-weight: 900; }
+        .order-id { color: #888; }
+        .items-list { margin: 10px 0; font-size: 13px; border-top: 1px solid #222; border-bottom: 1px solid #222; padding: 12px 0; }
+        .item { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .item-qty { color: #555; font-size: 11px; }
+        .receipt-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+        .total-price { color: #4CAF50; font-weight: 900; font-size: 22px; letter-spacing: -1px; }
+        .payment-method { font-size: 9px; color: #fff; background: #222; padding: 4px 10px; border-radius: 4px; font-weight: 900; text-transform: uppercase; }
+
+        .modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background: #111; padding: 30px; border-radius: 20px; width: 90%; max-width: 350px; border: 1px solid #222;
+        }
+        .modal-content h3 { color: #ff4d4d; margin-top: 0; font-size: 14px; text-transform: uppercase; font-weight: 900; letter-spacing: 1px; margin-bottom: 20px; }
+        .modal-content input {
+            width: 100%; padding: 15px; margin: 10px 0 20px; background: #0a0a0a; border: 1px solid #222;
+            color: white; border-radius: 10px; box-sizing: border-box; font-family: 'Inter'; font-weight: 700;
+        }
+
+
+        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 25px; width: 100%; }
+        .btn { padding: 16px; border-radius: 12px; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: 0.3s; font-size: 12px; letter-spacing: 1px; }
+        .btn-shop { background: #ff3b3b; color: white; text-decoration: none; display: flex; align-items: center; justify-content: center; }
+        .btn-home { background: #64748b; color: #ffff; border: 1px solid #222; }
+        .btn-logout { 
+            background: #dc2626; 
+            color: #ffff; 
+            border: 1px solid #222; 
+            grid-column: 1 / -1;
+            width: 100%;   
+        }
+        .btn-save { background: #4CAF50; color: white; width: 100%; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+
+        .empty-state { text-align: center; padding: 60px 20px; color: #333; font-weight: 900; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; line-height: 1.6; }
+
+        @media (max-width: 480px) {
+            body { padding: 15px; }
+            .settings-trigger { top: 12px; left: 12px; padding: 8px 12px; font-size: 10px; }
+            .profile-card { padding: 28px 18px; margin-top: 60px; }
+            .avatar { width: 80px; height: 80px; font-size: 32px; }
+            h2 { font-size: 18px; }
+            .btn-group { grid-template-columns: 1fr; }
+            .btn-logout { grid-column: 1; }
+            .receipt-card { padding: 15px; }
+        }

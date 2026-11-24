@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Order - JM Motorshop</title>
+    <link rel="icon" type="image/png" href="../logo-icons/logologo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cart-design.css">
+</head>
+<body>
+    <h1>YOUR CART</h1>
+
+    <div class="order-container" id="orderList"></div>
+
+    <div class="total-section" id="cartSummary" style="display: none;">
+        <div class="total-row">
+            <span class="total-label">Grand Total</span>
+            <span id="totalDisplay" class="total-amount">₱0</span>
+        </div>
+        <button class="btn-checkout" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+    </div>
+
+    <a href="../branding/brand.html" class="continue-btn">← Continue Shopping</a>
+
+    <script src="cart-function.js"></script>
+</body>
+</html>

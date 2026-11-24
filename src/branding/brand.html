@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Brand - JM Motorshop</title>
+    <link rel="icon" type="image/png" href="../logo-icons/logologo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            background: #0a0a0a; 
+            color: white; 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .main-header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(15px);
+            padding: 15px 50px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr; 
+            align-items: center;
+            border-bottom: 1px solid #222;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .logo-area { justify-self: start; }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: 0.3s ease;
+            cursor: pointer; 
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .logo-icon:hover { transform: scale(1.1); }
+
+        .nav-links { 
+            display: flex; 
+            gap: 40px; 
+            list-style: none; 
+            margin: 0; 
+            padding: 0; 
+            justify-self: center;
+        }
+
+        .nav-links a { 
+            text-decoration: none; 
+            color: #666; 
+            font-weight: 700; 
+            font-size: 12px; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px;
+            transition: 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #ff4d4d; }
+
+        .profile-area { justify-self: end; }
+
+        .profile-circle {
+            width: 38px;
+            height: 38px;
+            background: #111;
+            border: 2px solid #333;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .profile-circle img {
+            width: 60%; 
+            height: 60%;
+            object-fit: contain;
+            filter: invert(1);
+        }
+
+        .profile-circle:hover {
+            border-color: #ff4d4d;
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(255, 77, 77, 0.3);
+        }
+
+        .header { text-align: center; margin-top: 140px; margin-bottom: 50px; animation: fadeInDown 0.8s ease-out; }
+        .brand-logo-img { width: 50px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255, 77, 77, 0.3)); }
+        h1 { color: white; font-weight: 900; text-transform: uppercase; margin: 0; font-size: 36px; letter-spacing: -1px; }
+        h1 span { color: #ff4d4d; }
+        p.sub-text { color: #555; font-size: 13px; margin-top: 8px; text-transform: uppercase; letter-spacing: 3px; }
+
+        .brand-container { 
+            width: 100%;
+            max-width: 450px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            padding-bottom: 50px;
+        }
+
+        .brand-card {
+            background: linear-gradient(145deg, #151515, #0f0f0f);
+            border: 1px solid #222;
+            padding: 25px 30px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            opacity: 0;
+            animation: slideInRight 0.6s ease-out forwards;
+        }
+
+        .brand-card:nth-child(1) { animation-delay: 0.2s; }
+        .brand-card:nth-child(2) { animation-delay: 0.3s; }
+        .brand-card:nth-child(3) { animation-delay: 0.4s; }
+
+        .brand-card:hover { 
+            border-color: #ff4d4d; 
+            background: #1a1a1a; 
+            transform: translateX(15px);
+            box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .brand-card span { 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            font-size: 22px; 
+            color: #eee;
+            transition: 0.3s;
+        }
+        .brand-card:hover span { color: #ff4d4d; }
+
+        .brand-card img { height: 40px; transition: 0.4s; filter: grayscale(100%) brightness(0.8); }
+        .brand-card:hover img { filter: grayscale(0%) brightness(1); transform: scale(1.1); }
+
+        .wipe {
+            position: fixed; top: 0; left: -100%; width: 100%; height: 100%;
+            background: #ff4d4d; z-index: 9999; transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+        .wipe.active { left: 0; }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .main-header { padding: 12px 20px; }
+            .nav-links { gap: 20px; }
+            .nav-links a { font-size: 10px; letter-spacing: 1px; }
+            h1 { font-size: 26px; }
+            .brand-container { padding: 0 15px 50px; }
+            .brand-card { padding: 20px 22px; }
+            .brand-card span { font-size: 18px; }
+            .brand-card img { height: 32px; }
+        }
+
+        @media (max-width: 480px) {
+            .main-header { padding: 10px 15px; }
+            .nav-links { gap: 14px; }
+            .nav-links a { font-size: 9px; }
+            h1 { font-size: 22px; }
+            p.sub-text { font-size: 11px; letter-spacing: 2px; }
+            .header { margin-top: 110px; margin-bottom: 30px; }
+            .brand-card:hover { transform: translateX(8px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wipe" id="wipe"></div>
+
+    <header class="main-header">
+        <div class="logo-area">
+            <div class="logo-icon" onclick="handleAdminClick()">
+                <img src="../logo-icons/logologo.png" alt="Logo">
+            </div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="../start/index.html">Home</a></li>
+            <li><a href="../about-us/about.html">About Store</a></li>
+            <li><a href="brand.html" class="active">View Shop</a></li>
+        </ul>
+
+        <div class="profile-area">
+            <div class="profile-circle" onclick="goToAccount()">
+                <img src="../logo-icons/user-3-fill.png" alt="Profile">
+            </div>
+        </div>
+    </header>
+
+    <div class="header">
+        <img src="../logo-icons/logologo.png" class="brand-logo-img" alt="JM"> 
+        <h1>SELECT <span>BRAND</span></h1>
+        <p class="sub-text">Motorcycle Manufacturer</p>
+    </div>
+
+    <div class="brand-container">
+        <div class="brand-card" onclick="selectBrand('Honda')">
+            <span>Honda</span>
+            <img src="../logo-icons/honda.png" alt="honda">
+        </div>
+
+        <div class="brand-card" onclick="selectBrand('Yamaha')">
+            <span>Yamaha</span>
+            <img src="../logo-icons/yamaha.png" alt="yamaha">
+        </div>
+
+        <div class="brand-card" onclick="selectBrand('Suzuki')">
+            <span>Suzuki</span>
+            <img src="../logo-icons/suzuki.png" alt="suzuki">
+        </div>
+
+        <div class="brand-card" onclick="selectBrand('Kawasaki')">
+            <span>Kawasaki</span>
+            <img src="../logo-icons/kawasaki.png" alt="kawasaki">
+        </div>
+
+        <div class="brand-card" onclick="selectBrand('KTM')">
+            <span>KTM</span>
+            <img src="../logo-icons/ktm.png" alt="ktm">
+        </div>
+
+        
+    </div>
+
+    <script src="brand-function.js"></script>
+
+</body>
+</html>
