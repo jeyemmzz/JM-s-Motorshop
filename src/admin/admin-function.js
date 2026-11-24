@@ -1,5 +1,5 @@
 function syncProfile() {
-    const user = JSON.parse(localStorage.getItem('currentUser'));
+    const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
     if (user) {
         const nameToDisplay = user.displayName || user.username;
         document.getElementById('adminName').innerText = nameToDisplay;
@@ -141,8 +141,8 @@ function addPart() {
 }
 
 function restockItem(i) {
-    let inv = JSON.parse(localStorage.getItem('jm_master_inventory'));
-    let currentStock = inv[i].stock;
+    let inv = JSON.parse(localStorage.getItem('jm_master_inventory') || '[]');
+    let currentStock = inv[i] ? inv[i].stock : 0;
     
     let val = prompt(`Current stock for ${inv[i].name} is ${currentStock}. How many to add? (Max total: 50)`, "10");
     
@@ -193,7 +193,7 @@ function deleteUser(index) {
 
 function deleteItem(i) {
     if (confirm("Confirm deletion of this part?")) {
-        let inv = JSON.parse(localStorage.getItem('jm_master_inventory'));
+        let inv = JSON.parse(localStorage.getItem('jm_master_inventory') || '[]');
         inv.splice(i, 1);
         localStorage.setItem('jm_master_inventory', JSON.stringify(inv));
         renderInventory();

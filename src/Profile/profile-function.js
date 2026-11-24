@@ -1,4 +1,4 @@
-        let user = JSON.parse(localStorage.getItem('currentUser'));
+        let user = JSON.parse(localStorage.getItem('currentUser') || 'null');
 
         if (!user) {
             window.location.replace('../login/login.html');

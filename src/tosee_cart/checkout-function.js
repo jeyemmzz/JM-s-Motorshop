@@ -1,5 +1,5 @@
-const userSession = JSON.parse(localStorage.getItem('currentUser'));
-let cartData = JSON.parse(localStorage.getItem('cart')) || [];
+const userSession = JSON.parse(localStorage.getItem('currentUser') || 'null');
+let cartData = JSON.parse(localStorage.getItem('cart') || '[]');
 let selectedPayment = "";
 
         window.onload = () => {

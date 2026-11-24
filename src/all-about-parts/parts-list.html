@@ -54,7 +54,7 @@
                 );
 
                 if (liveParts.length === 0) {
-                    container.innerHTML = `<div class="empty-msg">NO ${selectedCat ? selectedCat.toUpperCase() : ''} PARTS FOUND FOR ${selectedBrand.toUpperCase()}.</div>`;
+                    container.innerHTML = `<div class="empty-msg">NO ${selectedCat ? selectedCat.toUpperCase() : ''} PARTS FOUND FOR ${selectedBrand ? selectedBrand.toUpperCase() : 'THIS BRAND'}.</div>`;
                     return;
                 }
 
